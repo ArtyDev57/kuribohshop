@@ -2,13 +2,13 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAAiQ5RSc6jPLSrruA_CgIOukCNUUxZhxU",
-    authDomain: "kuribohshop.firebaseapp.com",
-    databaseURL: "https://kuribohshop.firebaseio.com",
-    projectId: "kuribohshop",
-    storageBucket: "kuribohshop.appspot.com",
-    messagingSenderId: "1057846715671",
-    appId: "1:1057846715671:web:8fe7e7624a0677a9"
+    apiKey: "INSERT_YOURS_HERE",
+    authDomain: "INSERT_YOURS_HERE",
+    databaseURL: "INSERT_YOURS_HERE",
+    projectId: "INSERT_YOURS_HERE",
+    storageBucket: "INSERT_YOURS_HERE",
+    messagingSenderId: "INSERT_YOURS_HERE",
+    appId: "INSERT_YOURS_HERE"
 };
 
 admin.initializeApp(firebaseConfig);
