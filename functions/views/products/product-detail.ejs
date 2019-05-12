@@ -1,0 +1,78 @@
+<%- include('../components/header.ejs') %>
+<%- include('../components/navbar.ejs') %>
+
+<main>
+    <div class="container">
+        <h1 class="center">Kuribohshop</h1>
+        <h6 class="center">ແຫຼ່ງຈໍາໜ່າຍໄພ້ເກມແລະເກມກະດານທີ່ດີທີ່ສຸດໃນປະເທດລາວ</h6>
+        <br>
+        <hr>
+        <h5 class="center"><%= pro['name']%></h5>
+        <br>
+        <div class="row">
+            <div class="col s12 m6">
+                <!--Image here-->
+                <div class="card center waves-effect waves-block">
+                    <div class="card-content">
+                        <img src="<%= pro['image_url'] %>" alt="<%= pro['name'] %>"
+                            class="responsive-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <!--Descrition here-->
+                <div class="card">
+                    <div id="buying" class="modal">
+                        <div class="modal-content">
+                            <h4>ຂໍ້ມູນ</h4>
+                            <p>ນີ້ເປັນເວັບຮ້ານຄ້າທີ່ຈໍາລອງຂຶ້ນມາ, ບໍ່ສາມາດຊື້ຂາຍໄດ້ແທ້.
+                                ອາດມີການພັດທະນາລະບົບຊື້ຂາຍໃນຕໍ່ໜ້າ</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-light btn blue">ຕົກລົງ</a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h6>ລະຫັດສິນຄ້າ: <%= id %></h6>
+                        <h6>ລາຄາ: <%= pro['price'] %> LAK</h6>
+                        <h6>ຈໍານວນຊື້ </h6>
+                        <select name="amount" id="amount" class="input-field">
+                            <option value="" selected disabled>ກະລຸນາເລືອກຈໍານວນ</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <br>
+                        <a class="waves-effect waves-light btn-large modal-trigger blue" href="#buying"><i
+                                class="material-icons right">add_shopping_cart</i>ຈັບໃສ່ກະຕ່າ</a>
+                        <hr>
+                        <h6>ລາຍລະອຽດສິນຄ້າ</h6>
+                        <div class="row">
+                            <div class="col s12">
+                                <p>ວັນວາງຈໍາໜ່າຍ: <%= releaseDate ? releaseDate.toDateString() : 'ບໍ່ກໍານົດ' %></p>
+                            </div>
+                            <div class="col s12">
+                                <p>ສິນຄ້າເຂົ້າຮ້ານ: <%= importDate ? importDate.toDateString() : 'ບໍ່ກໍານົດ'%></p>
+                            </div>
+                            <div class="col s12">
+                                <p>ໝາຍເຫດ: ວັນທີວາງຈໍາໜ່າຍອາດຄາດເຄື່ອນຈາກຕົວຈິງ</p>
+                            </div>
+                            <div class="col s12">
+                                <h6>ຄໍາອະທິບາຍ</h6>
+                                <%= pro['description'] %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5>ສິນຄ້າທີ່ກ່ຽວຂ້ອງ</h5>
+            <p>ກໍາລັງປັບປຸງ...</p>
+        </div>
+    </div>
+</main>
+
+<%- include('../components/footer.ejs') %>

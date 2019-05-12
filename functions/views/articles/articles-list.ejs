@@ -1,0 +1,23 @@
+<%- include('../components/header.ejs') %>
+<%- include('../components/navbar.ejs') %>
+
+<main>
+    <div class="container">
+        <h1 class="center">Kuribohshop</h1>
+        <h6 class="center">ແຫຼ່ງຈໍາໜ່າຍໄພ້ເກມແລະເກມກະດານທີ່ດີທີ່ສຸດໃນປະເທດລາວ</h6>
+        <br>
+        <hr>
+        <% if (ar !== null && ar !== undefined && ar.length > 0) { %>
+        <h3 class="center"> ບົດຄວາມ </h3>
+        <div class="collection">
+        <% for (article of ar) { %>
+        <a href="/article/<%= article.data['article_id'] %>" class="collection-item blue-text text-darken-2"><%= article.data['title']%><br><%= article.data['thumbnail']%></a>
+        <% } %>
+        </div>
+        <% } else { %>
+        <h3 class="center"> ບໍ່ມີບົດຄວາມ </h3>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../components/footer.ejs') %>

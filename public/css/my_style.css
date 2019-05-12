@@ -1,0 +1,27 @@
+body {
+    font-family: 'Noto Sans Lao UI', 'Roboto';
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.img-card {
+    width: 200px;
+    height: 200px;
+}
+
+input::placeholder {
+    font-family: 'Noto Sans Lao UI', 'Roboto';
+}
+
+select {
+    font-family: 'Noto Sans Lao UI', 'Roboto';
+}
+
+.des-list {
+    list-style-type: circle !important;
+}

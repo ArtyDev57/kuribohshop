@@ -1,0 +1,45 @@
+<%- include('../components/header.ejs') %>
+<%- include('../components/navbar.ejs') %>
+
+<main>
+    <div class="container">
+        <h1 class="center">Kuribohshop</h1>
+        <h6 class="center">ແຫຼ່ງຈໍາໜ່າຍໄພ້ເກມແລະເກມກະດານທີ່ດີທີ່ສຸດໃນປະເທດລາວ</h6>
+        <br>
+        <hr>
+        <% if (pro !== null && pro !== undefined && pro.length > 0) { %>
+        <h3 class="center"><%= path === '/' ? 'ສິນຄ້າທັງໝົດ' : title %></h3>
+        <div class="row">
+            <div id="buying" class="modal">
+                <div class="modal-content">
+                    <h4>ຂໍ້ມູນ</h4>
+                    <p>ນີ້ເປັນເວັບຮ້ານຄ້າທີ່ຈໍາລອງຂຶ້ນມາ, ບໍ່ສາມາດຊື້ຂາຍໄດ້ແທ້. ອາດມີການພັດທະນາລະບົບຊື້ຂາຍໃນຕໍ່ໜ້າ</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-light btn blue">ຕົກລົງ</a>
+                </div>
+            </div>
+            <% for (product of pro) { %>
+            <div class="col s12 m6">
+                <a href="/product/<%= product.id %>" class="modal-trigger">
+                    <div class="card center waves-effect waves-block">
+                        <div class="card-content">
+                            <img src="<%= product.data['image_url'] %>" alt="<%= product.data['name'] %>"
+                                class="responsive-img">
+                            <h6><%= product.data['name']%></h6>
+                            <p><%= product.data['price']%> LAK</p>
+                            <a class="waves-effect waves-light btn modal-trigger blue" href="#buying"><i
+                                    class="material-icons right">add_shopping_cart</i>ສັ່ງຊື້</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+        </div>
+        <% } else { %>
+        <h3 class="center">ຍັງບໍ່ມີສິນຄ້າ</h3>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../components/footer.ejs') %>
