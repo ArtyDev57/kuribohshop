@@ -25,6 +25,9 @@ exports.getArticle = async (req, res, next) => {
     try {
         const id = req.params.id;
         const doc = await db.collection('articles').doc(id).get();
+        if (!doc.exists) {
+            res.status(404).render('404', {title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"});
+        } else {
         const article = doc.data()
         const publishedDate = doc.data().published_date;
         console.log(article['title']);
@@ -34,6 +37,7 @@ exports.getArticle = async (req, res, next) => {
            publishedDate: publishedDate,
            path: '/article/'+article['id']
         });
+    }
     } catch (err) {
 
     }

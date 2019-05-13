@@ -14,8 +14,7 @@
                 <!--Image here-->
                 <div class="card center waves-effect waves-block">
                     <div class="card-content">
-                        <img src="<%= pro['image_url'] %>" alt="<%= pro['name'] %>"
-                            class="responsive-img">
+                        <img src="<%= pro['image_url'] %>" alt="<%= pro['name'] %>" class="responsive-img">
                     </div>
                 </div>
             </div>
@@ -51,10 +50,10 @@
                         <h6>ລາຍລະອຽດສິນຄ້າ</h6>
                         <div class="row">
                             <div class="col s12">
-                                <p>ວັນວາງຈໍາໜ່າຍ: <%= releaseDate ? releaseDate.toDateString() : 'ບໍ່ກໍານົດ' %></p>
+                                <p>ວັນວາງຈໍາໜ່າຍ: <%= releaseDate ? new Intl.DateTimeFormat('en-GB').format(releaseDate) : 'ບໍ່ກໍານົດ' %></p>
                             </div>
                             <div class="col s12">
-                                <p>ສິນຄ້າເຂົ້າຮ້ານ: <%= importDate ? importDate.toDateString() : 'ບໍ່ກໍານົດ'%></p>
+                                <p>ສິນຄ້າເຂົ້າຮ້ານ: <%= importDate ? new Intl.DateTimeFormat('en-GB').format(importDate) : 'ບໍ່ກໍານົດ'%></p>
                             </div>
                             <div class="col s12">
                                 <p>ໝາຍເຫດ: ວັນທີວາງຈໍາໜ່າຍອາດຄາດເຄື່ອນຈາກຕົວຈິງ</p>

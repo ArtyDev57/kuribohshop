@@ -108,3 +108,6 @@ typings/
 .history
 
 # End of https://www.gitignore.io/api/node,firebase,visualstudiocode
+public/.DS_Store
+.vscode/settings.json
+.DS_Store
