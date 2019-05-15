@@ -13,7 +13,7 @@
             <div id="buying" class="modal">
                 <div class="modal-content">
                     <h4>ຂໍ້ມູນ</h4>
-                    <p>ນີ້ເປັນເວັບຮ້ານຄ້າທີ່ຈໍາລອງຂຶ້ນມາ, ບໍ່ສາມາດຊື້ຂາຍໄດ້ແທ້. ອາດມີການພັດທະນາລະບົບຊື້ຂາຍໃນຕໍ່ໜ້າ</p>
+                    <p>ຍັງບໍ່ສາມາດໃຊ້ງານໄດ້. ອາດມີການພັດທະນາລະບົບຊື້ຂາຍຈໍາລອງໃນຕໍ່ໜ້າ</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-close waves-effect waves-light btn blue">ຕົກລົງ</a>
@@ -27,7 +27,7 @@
                             <img src="<%= product.data['image_url'] %>" alt="<%= product.data['name'] %>"
                                 class="responsive-img">
                             <h6><%= product.data['name']%></h6>
-                            <p><%= product.data['price']%> LAK</p>
+                            <p><%= new Intl.NumberFormat('la-LA', {style: 'currency', currency: 'LAK'}).format(product.data['price'])%></p>
                             <a class="waves-effect waves-light btn modal-trigger blue" href="#buying"><i
                                     class="material-icons right">add_shopping_cart</i>ສັ່ງຊື້</a>
                         </div>

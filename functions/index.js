@@ -6,7 +6,6 @@ const cors = require('cors');
 const bodyParser = require('./node_modules/body-parser');
 
 const app = express();
-const db = require('./util/database');
 
 const homeRoute = require('./routes/home');
 const productRoute = require('./routes/products');
