@@ -1,68 +1,64 @@
-const db = require('../util/database');
+const ProductsDB = require('../models/products');
 
-exports.getProducts = async (req, res, next) => {
-    try {
-        const snapshot = await db.collection('products').orderBy('release_date', 'desc').get();
-        const products = [];
-        snapshot.forEach(doc => {
-            products.push({
-                id: doc.id,
-                data: doc.data()
-            });
-        });
-        console.log(products[0].data['name']);
-        res.render('products/products-list', {
-            pro: products,
-            title: 'ໜ້າຫຼັກ',
-            path: '/'
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-exports.getProductsByBrand = async (req, res, next) => {
-    try {
-        const brand = req.params.brand;
-        let snapshot = await db.collection('products').where('brand_url', '==', brand).orderBy('release_date', 'desc').get();
-        let products = [];
-        if (snapshot.empty) {
-            if (brand == 'yugioh' || brand == 'vanguard' || brand == 'pokemon' || brand == 'uno' || brand == 'monopoly' || brand == 'catan') {
-                res.render('products/products-list', {
-                    pro: null,
-                    title: brand,
-                    brand: brand,
-                });
-            } else {
-                res.status(404).render('404', {
-                    title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"
-                });
-            }
-        } else {
+exports.getProducts = (req, res, next) => {
+    const products = [];
+    ProductsDB.getProducts().then(
+        snapshot => {
             snapshot.forEach(doc => {
                 products.push({
                     id: doc.id,
                     data: doc.data()
                 });
             });
-            console.log(products[0].data['name']);
-            res.render('products/products-list', {
-                pro: products,
-                title: products[0].data['brand'],
-                brand: products[0].data['brand'],
-                path: '/brand/' + products[0].data['brand_url']
-            });
         }
+    ).then(() => {
+        res.render('products/products-list', {
+            pro: products,
+            title: 'ໜ້າຫຼັກ',
+            path: '/'
+        });
+    }).catch(err => err);
+};
 
-    } catch (err) {
-        console.log(err);
-    }
+exports.getProductsByBrand = (req, res, next) => {
+    const brand = req.params.brand;
+    const products = [];
+    ProductsDB.getProductsByBrand(brand).then(
+        snapshot => {
+            if (snapshot.empty) {
+                if (brand == 'yugioh' || brand == 'vanguard' || brand == 'pokemon' || brand == 'uno' || brand == 'monopoly' || brand == 'catan') {
+                    res.render('products/products-list', {
+                        pro: null,
+                        title: brand,
+                        brand: brand,
+                    });
+                } else {
+                    res.status(404).render('404', {
+                        title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"
+                    });
+                }
+            } else {
+                snapshot.forEach(doc => {
+                    products.push({
+                        id: doc.id,
+                        data: doc.data()
+                    });
+                });
+            }
+        }
+    ).then(() => {
+        res.render('products/products-list', {
+            pro: products,
+            title: products[0].data['brand'],
+            brand: products[0].data['brand'],
+            path: '/brand/' + products[0].data['brand_url']
+        });
+    }).catch(err => err);
 }
 
-exports.getProduct = async (req, res, next) => {
-    try {
-        const id = req.params.id;
-        const doc = await db.collection('products').doc(id).get();
+exports.getProduct = (req, res, next) => {
+    const id = req.params.id;
+    ProductsDB.getProduct(id).then( doc => {
         if (!doc.exists) {
             res.status(404).render('404', {
                 title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"
@@ -72,7 +68,6 @@ exports.getProduct = async (req, res, next) => {
             const product = doc.data();
             const releaseDate = doc.data().release_date.toDate();
             const importDate = doc.data().import_date.toDate();
-            console.log(productID + ': ' + product['name'] + '=> ' + releaseDate);
             res.render('products/product-detail', {
                 title: product['name'],
                 id: productID,
@@ -81,7 +76,5 @@ exports.getProduct = async (req, res, next) => {
                 releaseDate: releaseDate
             });
         }
-    } catch (err) {
-        console.log(err);
-    }
+    }).catch(err => err);
 }

@@ -1,44 +1,41 @@
-const db = require('../util/database');
+const ArticlesDB = require('../models/articles');
 
-exports.getArticles = async (req, res ,next) => {
-    try {
-        const snapshot = await db.collection('articles').orderBy('published_date', 'desc').get();
-        const articles = [];
-        snapshot.forEach(doc => {
-            articles.push({
-                id: doc.id,
-                data: doc.data()
+exports.getArticles = (req, res, next) => {
+    const articles = [];
+    ArticlesDB.getArticles().then(
+        snapshot => {
+            snapshot.forEach(doc => {
+                articles.push({
+                    id: doc.id,
+                    data: doc.data()
+                });
             });
-        });
-        console.log(articles[0].data['title']);
+        }
+    ).then(() => {
         res.render('articles/articles-list', {
             title: 'ບົດຄວາມ',
             ar: articles,
             path: '/article'
         })
-    } catch (err) {
-        console.log(err);
-    }
+    }).catch(err => err);
 }
 
-exports.getArticle = async (req, res, next) => {
-    try {
-        const id = req.params.id;
-        const doc = await db.collection('articles').doc(id).get();
+exports.getArticle = (req, res, next) => {
+    const id = req.params.id;
+    ArticlesDB.getArticle(id).then(doc => {
         if (!doc.exists) {
-            res.status(404).render('404', {title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"});
+            res.status(404).render('404', {
+                title: "ບໍ່ພົບເຫັນໜ້າທີ່ຄົ້ນຫາ"
+            });
         } else {
-        const article = doc.data()
-        const publishedDate = doc.data().published_date;
-        console.log(article['title']);
-        res.render('articles/article-detail', {
-           title: article['title'],
-           ar: article,
-           publishedDate: publishedDate,
-           path: '/article/'+article['id']
-        });
-    }
-    } catch (err) {
-
-    }
+            const article = doc.data()
+            const publishedDate = doc.data().published_date;
+            res.render('articles/article-detail', {
+                title: article['title'],
+                ar: article,
+                publishedDate: publishedDate,
+                path: '/article/' + article['id']
+            });
+        }
+    }).catch(err => err);
 }
