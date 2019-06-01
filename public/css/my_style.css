@@ -1,5 +1,11 @@
+@font-face {
+    font-family: myFonts;
+    src: url(../fonts/noto_sans_lao.ttf) format("truetype"),
+        url(../fonts/roboto.ttf) format("truetype");
+}
+
 body {
-    font-family: 'Noto Sans Lao UI', 'Roboto';
+    font-family: myFonts, sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -9,19 +15,10 @@ main {
     flex: 1 0 auto;
 }
 
-.img-card {
-    width: 200px;
-    height: 200px;
-}
-
 input::placeholder {
-    font-family: 'Noto Sans Lao UI', 'Roboto';
+    font-family: myFonts, sans-serif;
 }
 
 select {
-    font-family: 'Noto Sans Lao UI', 'Roboto';
-}
-
-.des-list {
-    list-style-type: circle !important;
+    font-family: myFonts, sans-serif;
 }
