@@ -9,9 +9,22 @@
         <hr>
         <% if (ar !== null && ar !== undefined && ar.length > 0) { %>
         <h3 class="center"> ບົດຄວາມ </h3>
-        <div class="collection">
+        <div class="row">
         <% for (article of ar) { %>
-        <a href="/article/<%= article.data['article_id'] %>" class="collection-item blue-text text-darken-2"><%= article.data['title']%><br><%= article.data['thumbnail']%></a>
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="responsive-img" src="<%= article.data['thumbnail_img'] %>" alt="thumbnail">
+                    </div>
+                    <div class="card-content">
+                        <h6 class="card-title black-text"> <%= article.data['title'] %> </h6>
+                        <p><%= article.data['thumbnail'] %></p>
+                    </div>
+                    <div class="card-action">
+                        <a class="btn waves-effect waves-light blue" href="/article/<%= article.data['article_id'] %>">ເຂົ້າອ່ານ</a>
+                    </div>
+                </div>
+            </div>
         <% } %>
         </div>
         <% } else { %>

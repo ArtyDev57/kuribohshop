@@ -1,24 +1,9 @@
 @font-face {
     font-family: myFonts;
-    src: url(../fonts/noto_sans_lao.ttf) format("truetype"),
-        url(../fonts/roboto.ttf) format("truetype");
+    src: url(../fonts/noto_sans_lao.woff2) format("woff2"),
+        url(../fonts/roboto.woff2) format("woff2");
 }
 
-body {
-    font-family: myFonts, sans-serif;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-}
-
-input::placeholder {
-    font-family: myFonts, sans-serif;
-}
-
-select {
+body, input::placeholder {
     font-family: myFonts, sans-serif;
 }

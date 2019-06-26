@@ -1,3 +1,7 @@
+/* This web is the property of the Half-Blood Prince
+ */
+
+
 const functions = require('firebase-functions');
 
 const express = require('express');
