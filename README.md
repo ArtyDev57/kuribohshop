@@ -2,16 +2,15 @@
 
 ## Introduction
 
-My web project using Node.js and Firebase services
+My school, web project using Node.js and Firebase services
 
 ## Tools
 
-* Node.js as backend language
-* EJS as template engine
-* Firebase Cloud Firestore as Database
-* Firebase Hosting and Cloud Functions as Deploy Environment
-* MaterializeCSS for styling pages;
+* Node.js
+* EJS
+* Cloud Firestore, Hosting & Cloud Functions
+* MaterializeCSS;
 
 ## Further Infomation
 
-To be updated
+UPDATED 15 January 2022: The site has been closed.
